@@ -1,6 +1,6 @@
 {
   "name": "@litecanvas/plugin-more-shapes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugin to draw shapes like ellipse and polygons in litecanvas games",
   "author": "Luiz Bills <luizbills@pm.me>",
   "license": "MIT",
