@@ -1,46 +1,9 @@
-/*! More Shapes plugin for litecanvas v0.1.1 by Luiz Bills | MIT Licensed */
+/*! More Shapes plugin for litecanvas v0.2.0 by Luiz Bills | MIT Licensed */
 window.pluginMoreShapes = plugin
 
 export default function plugin(engine, { colors }) {
   const _colors = colors()
   const _countColors = _colors.length
-  const _TWO_PI = 2 * Math.PI
-
-  /**
-   * Draw a ellipse
-   *
-   * @param {number} x
-   * @param {number} y
-   * @param {number} rx
-   * @param {number} ry
-   * @param {number} color
-   */
-  const oval = (x, y, rx, ry, color = 0) => {
-    const _ctx = engine.CANVAS.ctx
-    _ctx.strokeStyle = _colors[~~color % _countColors]
-    _ctx.beginPath()
-    _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, _TWO_PI)
-    _ctx.closePath()
-    _ctx.stroke()
-  }
-
-  /**
-   * Draw a filled ellipse
-   *
-   * @param {number} x
-   * @param {number} y
-   * @param {number} rx
-   * @param {number} ry
-   * @param {number} color
-   */
-  const ovalfill = (x, y, rx, ry, color = 0) => {
-    const _ctx = engine.CANVAS.ctx
-    _ctx.fillStyle = _colors[~~color % _countColors]
-    _ctx.beginPath()
-    _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, _TWO_PI)
-    _ctx.closePath()
-    _ctx.fill()
-  }
 
   /**
    * Draw a polygon from points

@@ -45,16 +45,13 @@
         transform(CENTERX, CENTERY, 1, angle)
         switch (state) {
           case 0:
-            drawOvals()
-            break
-          case 1:
             drawStar()
             break
+          case 1:
           case 2:
           case 3:
           case 4:
-          case 5:
-            sides = state + 3
+            sides = state + 4
             drawPolygons()
             break
         }
@@ -62,37 +59,16 @@
         text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2, 18)
       }
 
-      function drawRects() {
-        let w = WIDTH / 10
-        rectfill(-w / 2, -w / 2, w, w, 7)
-        w *= 1.75
-        rect(-w / 2, -w / 2, w, w, 5)
-      }
-
-      function drawCircles() {
-        let w = WIDTH / 10
-        circfill(0, 0, w, 5)
-        w *= 1.75
-        circ(0, 0, w, 1)
-      }
-
-      function drawOvals() {
-        let w = WIDTH / 10
-        ovalfill(-w * 1.5, -w, w * 1.5, w, 7)
-        w *= 1.75
-        oval(-w * 1.5, -w, w * 1.5, w, 4)
+      function drawStar() {
+        let r = WIDTH / 5
+        starfill(0, 0, 5, r, 6)
+        star(0, 0, 5, r * 1.5, 8)
       }
 
       function drawPolygons() {
         let r = WIDTH / 10
         rpolfill(0, 0, sides, r, 10)
         rpol(0, 0, sides, r * 1.5, 11)
-      }
-
-      function drawStar() {
-        let r = WIDTH / 5
-        starfill(0, 0, 5, r, 6)
-        star(0, 0, 5, r * 1.5, 8)
       }
     </script>
   </body>
