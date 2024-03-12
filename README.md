@@ -1,6 +1,6 @@
 # More Shapes plugin for litecanvas
 
-Plugin to draw shapes like ellipse and polygons in in [litecanvas](https://github.com/litecanvas/engine) games.
+Plugin to draw shapes like ellipse and polygons in [litecanvas](https://github.com/litecanvas/engine) games.
 
 ## Install
 
