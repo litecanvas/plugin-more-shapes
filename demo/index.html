@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+    user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <title>litecanvas Game</title>
+    <style type="text/css">
+      body {
+        background: #000;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/@litecanvas/litecanvas/dist/dist.js"></script>
+    <script src="../dist/dist.js"></script>
+    <script>
+      litecanvas({
+        plugins: [pluginMoreShapes],
+      })
+
+      let state = 0
+      let angle = 0
+      let sides = 0
+
+      function init() {
+        textalign("center", "bottom")
+        linestyle(1, null, HEIGHT / 80)
+      }
+
+      function update() {
+        if (TAPPED) {
+          state = ++state % 6
+        }
+        angle += 0.02
+      }
+
+      function draw() {
+        clear(3)
+        push()
+        transform(CENTERX, CENTERY, 1, angle)
+        switch (state) {
+          case 0:
+            drawOvals()
+            break
+          case 1:
+            drawStar()
+            break
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+            sides = state + 3
+            drawPolygons()
+            break
+        }
+        pop()
+        text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2, 18)
+      }
+
+      function drawRects() {
+        let w = WIDTH / 10
+        rectfill(-w / 2, -w / 2, w, w, 7)
+        w *= 1.75
+        rect(-w / 2, -w / 2, w, w, 5)
+      }
+
+      function drawCircles() {
+        let w = WIDTH / 10
+        circfill(0, 0, w, 5)
+        w *= 1.75
+        circ(0, 0, w, 1)
+      }
+
+      function drawOvals() {
+        let w = WIDTH / 10
+        ovalfill(-w * 1.5, -w, w * 1.5, w, 7)
+        w *= 1.75
+        oval(-w * 1.5, -w, w * 1.5, w, 4)
+      }
+
+      function drawPolygons() {
+        let r = WIDTH / 10
+        rpolfill(0, 0, sides, r, 10)
+        rpol(0, 0, sides, r * 1.5, 11)
+      }
+
+      function drawStar() {
+        let r = WIDTH / 5
+        starfill(0, 0, 5, r, 6)
+        star(0, 0, 5, r * 1.5, 8)
+      }
+    </script>
+  </body>
+</html>
