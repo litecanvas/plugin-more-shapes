@@ -1,9 +1,27 @@
-/*! More Shapes plugin for litecanvas v0.2.0 by Luiz Bills | MIT Licensed */
+/*! More Shapes plugin for litecanvas v0.3.0 by Luiz Bills | MIT Licensed */
 window.pluginMoreShapes = plugin
 
 export default function plugin(engine, { colors }) {
-  const _colors = colors()
-  const _countColors = _colors.length
+  const _colors = colors
+  const _TWO_PI = 2 * Math.PI
+
+  const oval = (x, y, rx, ry, color = 0) => {
+    const _ctx = engine.CANVAS.ctx
+    _ctx.strokeStyle = _colors[~~color % _colors.length]
+    _ctx.beginPath()
+    _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, _TWO_PI)
+    _ctx.closePath()
+    _ctx.stroke()
+  }
+
+  const ovalfill = (x, y, rx, ry, color = 0) => {
+    const _ctx = engine.CANVAS.ctx
+    _ctx.fillStyle = _colors[~~color % _colors.length]
+    _ctx.beginPath()
+    _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, _TWO_PI)
+    _ctx.closePath()
+    _ctx.fill()
+  }
 
   /**
    * Draw a polygon from points
@@ -13,7 +31,7 @@ export default function plugin(engine, { colors }) {
    */
   const pol = (points, color = 0) => {
     const _ctx = engine.CANVAS.ctx
-    _ctx.strokeStyle = _colors[~~color % _countColors]
+    _ctx.strokeStyle = _colors[~~color % _colors.length]
     _ctx.beginPath()
     const len = points.length
     for (let i = 0; i < len; i += 2) {
@@ -32,7 +50,7 @@ export default function plugin(engine, { colors }) {
    */
   const polfill = (points, color = 0) => {
     const _ctx = engine.CANVAS.ctx
-    _ctx.fillStyle = _colors[~~color % _countColors]
+    _ctx.fillStyle = _colors[~~color % _colors.length]
     _ctx.beginPath()
     const len = points.length
     for (let i = 0; i < len; i += 2) {

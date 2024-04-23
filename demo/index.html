@@ -23,7 +23,7 @@
         plugins: [pluginMoreShapes],
       })
 
-      let state = 0
+      let state = 5
       let angle = 0
       let sides = 0
 
@@ -42,7 +42,8 @@
       function draw() {
         clear(3)
         push()
-        transform(CENTERX, CENTERY, 1, angle)
+        translate(CENTERX, CENTERY)
+        rotate(angle)
         switch (state) {
           case 0:
             drawStar()
@@ -54,6 +55,9 @@
             sides = state + 4
             drawPolygons()
             break
+          case 5:
+            drawEllipse()
+            break
         }
         pop()
         text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2, 18)
@@ -61,14 +65,21 @@
 
       function drawStar() {
         let r = WIDTH / 5
-        starfill(0, 0, 5, r, 6)
-        star(0, 0, 5, r * 1.5, 8)
+        starfill(0, 0, 5, r, 4)
+        star(0, 0, 5, r * 1.5, 5)
       }
 
       function drawPolygons() {
         let r = WIDTH / 10
-        rpolfill(0, 0, sides, r, 10)
-        rpol(0, 0, sides, r * 1.5, 11)
+        rpolfill(0, 0, sides, r, 6)
+        rpol(0, 0, sides, r * 1.5, 7)
+      }
+
+      function drawEllipse() {
+        let rx = WIDTH / 6
+        let ry = rx * 0.25
+        ovalfill(-rx, -ry, rx, ry, 1)
+        oval(-rx * 1.5, -ry * 1.5, rx * 1.5, ry * 1.5, 2)
       }
     </script>
   </body>
