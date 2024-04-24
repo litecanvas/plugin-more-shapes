@@ -1,4 +1,4 @@
-/*! More Shapes plugin for litecanvas v0.3.0 by Luiz Bills | MIT Licensed */
+/*! More Shapes plugin for litecanvas v0.3.1 by Luiz Bills | MIT Licensed */
 window.pluginMoreShapes = plugin
 
 export default function plugin(engine, { colors }) {
@@ -6,7 +6,7 @@ export default function plugin(engine, { colors }) {
   const _TWO_PI = 2 * Math.PI
 
   const oval = (x, y, rx, ry, color = 0) => {
-    const _ctx = engine.CANVAS.ctx
+    const _ctx = engine.ctx()
     _ctx.strokeStyle = _colors[~~color % _colors.length]
     _ctx.beginPath()
     _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, _TWO_PI)
@@ -15,7 +15,7 @@ export default function plugin(engine, { colors }) {
   }
 
   const ovalfill = (x, y, rx, ry, color = 0) => {
-    const _ctx = engine.CANVAS.ctx
+    const _ctx = engine.ctx()
     _ctx.fillStyle = _colors[~~color % _colors.length]
     _ctx.beginPath()
     _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, _TWO_PI)
@@ -30,7 +30,7 @@ export default function plugin(engine, { colors }) {
    * @param {number} color
    */
   const pol = (points, color = 0) => {
-    const _ctx = engine.CANVAS.ctx
+    const _ctx = engine.ctx()
     _ctx.strokeStyle = _colors[~~color % _colors.length]
     _ctx.beginPath()
     const len = points.length
@@ -49,7 +49,7 @@ export default function plugin(engine, { colors }) {
    * @param {number} color
    */
   const polfill = (points, color = 0) => {
-    const _ctx = engine.CANVAS.ctx
+    const _ctx = engine.ctx()
     _ctx.fillStyle = _colors[~~color % _colors.length]
     _ctx.beginPath()
     const len = points.length
