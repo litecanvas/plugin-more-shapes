@@ -29,7 +29,7 @@
 
       function init() {
         textalign("center", "bottom")
-        linestyle(1, null, HEIGHT / 80)
+        linedash(HEIGHT / 80)
       }
 
       function update() {
@@ -60,7 +60,8 @@
             break
         }
         pop()
-        text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2, 18)
+        textsize(18)
+        text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2)
       }
 
       function drawStar() {
