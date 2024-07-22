@@ -1,4 +1,4 @@
-/*! More Shapes plugin for litecanvas v0.4.0 by Luiz Bills | MIT Licensed */
+/*! More Shapes plugin for litecanvas v0.4.2 by Luiz Bills | MIT Licensed */
 window.pluginMoreShapes = plugin
 
 export default function plugin(engine) {
