@@ -32,15 +32,16 @@
         linedash(HEIGHT / 80)
       }
 
+      function tapped() {
+        state = ++state % 6
+      }
+
       function update() {
-        if (TAPPED) {
-          state = ++state % 6
-        }
         angle += 0.02
       }
 
       function draw() {
-        clear(3)
+        cls(3)
         push()
         translate(CENTERX, CENTERY)
         rotate(angle)

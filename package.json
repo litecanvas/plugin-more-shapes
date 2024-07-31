@@ -1,7 +1,7 @@
 {
   "name": "@litecanvas/plugin-more-shapes",
-  "version": "0.4.2",
-  "description": "Plugin to draw shapes like ellipse and polygons in litecanvas games",
+  "version": "0.4.3",
+  "description": "Plugin to draw shapes like ellipse, stars and other polygons in litecanvas games",
   "author": "Luiz Bills <luizbills@pm.me>",
   "license": "MIT",
   "homepage": "https://github.com/litecanvas/plugin-more-shapes#readme",
@@ -21,7 +21,7 @@
     "shapes"
   ],
   "scripts": {
-    "start": "esbuild src/index.js --bundle --watch --outfile=dist/dist.js --servedir=public",
+    "dev": "esbuild src/index.js --bundle --watch --outfile=dist/dist.js --servedir=.",
     "build": "esbuild src/index.js --bundle --minify --outfile=dist/dist.js",
     "prepare": "npm run build"
   },
