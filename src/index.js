@@ -5,7 +5,7 @@ window.pluginMoreShapes = plugin
  * @param {LitecanvasInstance} engine
  */
 export default function plugin(engine) {
-  /** Draw oulined ellipse */
+  /** Draw a ellipse ouline */
   const oval = (x, y, rx, ry, color = 0) => {
     const _ctx = engine.ctx()
     _ctx.strokeStyle = engine.getcolor(color)
@@ -73,7 +73,7 @@ export default function plugin(engine) {
   }
 
   /**
-   * Draw a outlined star
+   * Draw a star ouline
    *
    * @param {number} x
    * @param {number} y

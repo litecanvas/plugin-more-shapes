@@ -28,7 +28,6 @@
       let sides = 0
 
       function init() {
-        textalign("center", "bottom")
         linedash(HEIGHT / 80)
         textsize(18)
       }
@@ -63,6 +62,7 @@
         }
         pop()
 
+        textalign("center", "bottom")
         text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2)
       }
 

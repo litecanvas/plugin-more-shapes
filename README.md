@@ -10,4 +10,84 @@ Plugin to draw shapes like ellipse and polygons in [litecanvas](https://github.c
 
 ## Usage
 
-See a demo on [playground](https://litecanvas.js.org?c=eJx1k21v2jAQgL%2FnV5yQJuISkpASNiF1WrWigrR1aCBt%2B%2BgGA16NbdlOC5r632c7SZOVTgrJ%2Bd6eu%2FPBqCEF5o9YhygIGDGgDTYEriD3J8x3zJ3SykY3RPtTsC15YajgQDk1IYI%2FAQATeLMqFJUm7O%2BNkXqaJCWXD7u4EIfkE3thJZKVO8qHB6HIUO%2BxJDrZUG38K%2F6t%2BxGEimgEVx99YgC6rTVVZFh9vtr4lQ9H1usZBc%2Bdwkq5sZ3Upbn4L9%2BubxZ3twgUMaXitXZ9vVzOblDNabofDCrpHUxcZvurJjGwzcdp9g9oo%2FBTjSkYwSq8RG8TwZCjCT%2FP7taz7z8jqIRfEfRrvziObeepvQgAWep96PIYhblmrpPXgc6qhCsz9MX5OP1ETbGH0JffdFVgTSCdehl8vStj60S14l4R%2FNA6jqatnHXky448bpI1K1GNawDjDmQp2GknuP4fKO9WNGOMSk3OfN3spZDVLOz8MKM7HvYKwg1RvQh698IYceg19nZM89nidr6GIWSpdVtjCUZ4FAizJwqqxbMpsghGH9DZnbblV9tt%2FwDKdvpjcbOeQwKj1M1fCraljIUWYR8%2FjQhUBGNUW19Z4AJGcR5Bfs6r7uRNVh741VQdVO4xE1RbOtoG8f4c8TLklnLsYCaN8mSV1nJhlz1zbPGIqzaH6hjBUJ0sxgruO0K13dkatPVoxFbZ6jJb2V%2F7j0Cs).
+See a demo on [playground](https://litecanvas.js.org?c=eJx9U2Fv2jAQ%2FZ5fcUKaapdAEgqsQuq0aUUFaeumgbTto5sY8Oralu200Kn%2FfbaTLGnZilC4e3e5d%2Ffu4NSCscRSuIBJxJ1HxJZ7Lw2eYQU1wYs4szQn4p4YhKNoU4rcMimACWYRht8RAJekWOWaKYucB3Cys1aZWZKUQt1uh7m8S963VRLFyy0Tgzup6cDsiKImKZix4TH8ZU5iCFWQpqbkFsPFu8DiP2zTwqWhqCr12VVahUI45D25p7c4E7QgZocW8%2BXVYg0JnKcet3RvDXukKDvH0VNnJkuUokU9lef69OXD5fL6CoOmttTCoY1o%2FX5lvYHpsxKlKhz8aolK6b4Td5iOnr1caPLw6qs5N%2BjMj6BKN1aYRRNhuKf8OL9ez7%2F9iKEyfvqolr5JFBi9bx6YzXeAQu%2B4ljUnhkI6qyX2Paws0QjXwI2m5LZNzGatPerYZx173BRrzqjSqg%2FjDslXyQ9bKcz%2FiCbdjuacM%2BUW%2FjLXr1pJhZq1Es62AvVyKizVvRh6N9Jaeddr4q1K9U0MYJS6tDVRYGWgAml3VEN1ma7ECB%2FtqNKnun33Z9Fuwu%2FLy%2FXCXdikuhG9YZwjV9l9JzHoGMa4jnRQOIVs6IwsO%2BZo5fknT5b69SrJO0RB7UA2xXX0RaQhfHvM91fhlm7f4Zs24MGBLnLqrnfkh5X3pOphoPcxDPTB0TjD%2F2a4jvtYQ%2B0yGrMFW8yr%2FQeDYEwe).
+
+### `vertices(points: number[][])`
+
+Draw lines connecting vertices.
+
+```js
+import litecanvas from "litecanvas"
+import pluginMoreShapes from "@litecanvas/plugin-more-shapes"
+
+// example: draw a triangle
+function draw() {
+  cls(0)
+
+  vertices([
+    // X Y points
+    [0, 128],
+    [128, 128],
+    [64, 0],
+  ])
+
+  // you should choose fill or/and stroke that vertices
+  stroke(4)
+  // or/and
+  // fill(5)
+}
+```
+
+### `oval(x, y, rx, ry, color)`
+
+Draw a ellipse outline.
+
+```js
+import litecanvas from "litecanvas"
+import pluginMoreShapes from "@litecanvas/plugin-more-shapes"
+
+function draw() {
+  cls(0)
+  oval(100, 100, 32, 64, 4)
+}
+```
+
+### `ovalfill(x, y, rx, ry, color)`
+
+Draw a color-filled ellipse.
+
+### `rpol(x, y, sides, radius, color)`
+
+Draw a regular polygon outline.
+
+```js
+import litecanvas from "litecanvas"
+import pluginMoreShapes from "@litecanvas/plugin-more-shapes"
+
+function draw() {
+  cls(0)
+  rpol(100, 100, 5, 64, 4)
+}
+```
+
+### `rpolfill(x, y, sides, radius, color)`
+
+Draw a color-filled regular polygon.
+
+### `star(x, y, tips, radius, color)`
+
+Draw a star outline.
+
+```js
+import litecanvas from "litecanvas"
+import pluginMoreShapes from "@litecanvas/plugin-more-shapes"
+
+function draw() {
+  cls(0)
+  star(100, 100, 8, 64, 5)
+}
+```
+
+### `starfill(x, y, tips, radius, color)`
+
+Draw a color-filled star.
