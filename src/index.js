@@ -1,7 +1,11 @@
-/*! More Shapes plugin for litecanvas v0.4.3 by Luiz Bills | MIT Licensed */
+/*! More Shapes plugin for litecanvas by Luiz Bills | MIT Licensed */
 window.pluginMoreShapes = plugin
 
+/**
+ * @param {LitecanvasInstance} engine
+ */
 export default function plugin(engine) {
+  /** Draw oulined ellipse */
   const oval = (x, y, rx, ry, color = 0) => {
     const _ctx = engine.ctx()
     _ctx.strokeStyle = engine.getcolor(color)
@@ -11,6 +15,7 @@ export default function plugin(engine) {
     _ctx.stroke()
   }
 
+  /** Draw filled ellipse */
   const ovalfill = (x, y, rx, ry, color = 0) => {
     const _ctx = engine.ctx()
     _ctx.fillStyle = engine.getcolor(color)
@@ -21,41 +26,22 @@ export default function plugin(engine) {
   }
 
   /**
-   * Draw a polygon from points
+   * Draw a polygon using a array of points (X, Y)
    *
    * @param {number[]} points
    * @param {number} color
    */
-  const pol = (points, color = 0) => {
-    const _ctx = engine.ctx()
-    _ctx.strokeStyle = engine.getcolor(color)
+  const vertices = (points) => {
+    _ctx = engine.ctx()
     _ctx.beginPath()
-    const len = points.length
-    for (let i = 0; i < len; i += 2) {
-      0 === i
-        ? _ctx.moveTo(~~points[i], ~~points[i + 1])
-        : _ctx.lineTo(~~points[i], ~~points[i + 1])
+    for (let i = 0; i < points.length; i++) {
+      if (0 === i) {
+        _ctx.moveTo(points[i][0], points[i][1])
+      } else {
+        _ctx.lineTo(points[i][0], points[i][1])
+      }
     }
-    _ctx.stroke()
-  }
-
-  /**
-   * Draw a filled polygon from points
-   *
-   * @param {number[]} points
-   * @param {number} color
-   */
-  const polfill = (points, color = 0) => {
-    const _ctx = engine.ctx()
-    _ctx.fillStyle = engine.getcolor(color)
-    _ctx.beginPath()
-    const len = points.length
-    for (let i = 0; i < len; i += 2) {
-      0 === i
-        ? _ctx.moveTo(~~points[i], ~~points[i + 1])
-        : _ctx.lineTo(~~points[i], ~~points[i + 1])
-    }
-    _ctx.fill()
+    _ctx.lineTo(points[0][0], points[0][1])
   }
 
   /**
@@ -68,7 +54,8 @@ export default function plugin(engine) {
    * @param {number} color
    */
   const rpol = (x, y, sides, radius, color) => {
-    pol(_getRegularPolygonPoints(x, y, sides, radius), color)
+    vertices(_getRegularPolygonPoints(x, y, sides, radius))
+    engine.stroke(color)
   }
 
   /**
@@ -81,20 +68,22 @@ export default function plugin(engine) {
    * @param {number} color
    */
   const rpolfill = (x, y, sides, radius, color) => {
-    polfill(_getRegularPolygonPoints(x, y, sides, radius), color)
+    vertices(_getRegularPolygonPoints(x, y, sides, radius))
+    engine.fill(color)
   }
 
   /**
-   * Draw a star
+   * Draw a outlined star
    *
    * @param {number} x
    * @param {number} y
-   * @param {number} npoints
+   * @param {number} tips
    * @param {number} radius
    * @param {number} color
    */
-  const star = (x, y, npoints, radius, color) => {
-    pol(_getStarPoints(x, y, npoints, radius), color)
+  const star = (x, y, tips, radius, color) => {
+    vertices(_getStarPoints(x, y, tips, radius))
+    engine.stroke(color)
   }
 
   /**
@@ -102,23 +91,23 @@ export default function plugin(engine) {
    *
    * @param {number} x
    * @param {number} y
-   * @param {number} npoints
+   * @param {number} tips
    * @param {number} radius
    * @param {number} color
    */
-  const starfill = (x, y, npoints, radius, color) => {
-    polfill(_getStarPoints(x, y, npoints, radius), color)
+  const starfill = (x, y, tips, radius, color) => {
+    vertices(_getStarPoints(x, y, tips, radius))
+    engine.fill(color)
   }
 
-  function _getStarPoints(x, y, npoints, radius) {
+  function _getStarPoints(x, y, tips, radius) {
     const inner = radius / 2
-    const max = 2 * npoints + 1
+    const max = 2 * tips + 1
     const points = []
     for (let i = 0; i < max; i++) {
       const r = i % 2 === 0 ? radius : inner
-      const a = (Math.PI * i) / npoints
-      points.push(x + r * sin(a))
-      points.push(y + r * cos(a))
+      const a = (Math.PI * i) / tips
+      points.push([x + r * sin(a), y + r * cos(a)])
     }
     return points
   }
@@ -128,15 +117,14 @@ export default function plugin(engine) {
     const TWO_PI = 2 * Math.PI
 
     for (let i = 0; i < sides; i++) {
-      points.push(x + radius * cos((i * TWO_PI) / sides))
-      points.push(y + radius * sin((i * TWO_PI) / sides))
+      points.push([
+        x + radius * cos((i * TWO_PI) / sides),
+        y + radius * sin((i * TWO_PI) / sides),
+      ])
     }
-
-    points.push(points[0])
-    points.push(points[1])
 
     return points
   }
 
-  return { oval, ovalfill, pol, polfill, rpol, rpolfill, star, starfill }
+  return { oval, ovalfill, vertices, rpol, rpolfill, star, starfill }
 }

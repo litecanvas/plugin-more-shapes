@@ -30,6 +30,7 @@
       function init() {
         textalign("center", "bottom")
         linedash(HEIGHT / 80)
+        textsize(18)
       }
 
       function tapped() {
@@ -61,14 +62,14 @@
             break
         }
         pop()
-        textsize(18)
+
         text(CENTERX, HEIGHT - 20, "Tap to draw other shapes", 2)
       }
 
       function drawStar() {
         let r = WIDTH / 5
         starfill(0, 0, 5, r, 4)
-        star(0, 0, 5, r * 1.5, 5)
+        star(0, 0, 5, r * 1.5, 11)
       }
 
       function drawPolygons() {
