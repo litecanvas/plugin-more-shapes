@@ -8,21 +8,17 @@ export default function plugin(engine) {
   /** Draw a ellipse ouline */
   const oval = (x, y, rx, ry, color = 0) => {
     const _ctx = engine.ctx()
-    _ctx.strokeStyle = engine.getcolor(color)
     _ctx.beginPath()
     _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, engine.TWO_PI)
-    _ctx.closePath()
-    _ctx.stroke()
+    engine.stroke(color)
   }
 
   /** Draw filled ellipse */
   const ovalfill = (x, y, rx, ry, color = 0) => {
     const _ctx = engine.ctx()
-    _ctx.fillStyle = engine.getcolor(color)
     _ctx.beginPath()
     _ctx.ellipse(~~x + ~~rx, ~~y + ~~ry, ~~rx, ~~ry, 0, 0, engine.TWO_PI)
-    _ctx.closePath()
-    _ctx.fill()
+    engine.fill(color)
   }
 
   /**
